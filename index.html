@@ -7,7 +7,7 @@
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 
-    <style>
+   <style>
 
 * {
     box-sizing: border-box;
@@ -23,17 +23,20 @@ body {
     width: 100%;
     min-width: 0;
     overflow-x: hidden;
+
     background-image: url("p1.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
+
     font-family: "Times New Roman", Times, serif;
 }
 
-/* =========================
+
+/* =====================================================
    NAVIGATION
-   ========================= */
+   ===================================================== */
 
 .c {
     position: fixed;
@@ -42,17 +45,15 @@ body {
     z-index: 9999;
 
     width: 100%;
-    height: 65px;
+    min-height: 65px;
 
     background-color: azure;
-
-    padding: 0 25px;
 
     display: flex;
     align-items: center;
     justify-content: flex-end;
 
-    border: none;
+    padding: 0 30px;
 }
 
 .c1 {
@@ -62,8 +63,7 @@ body {
 
     gap: 25px;
 
-    padding: 0;
-    text-align: right;
+    width: auto;
 }
 
 .c1 a {
@@ -73,9 +73,9 @@ body {
 }
 
 
-/* =========================
+/* =====================================================
    HOME
-   ========================= */
+   ===================================================== */
 
 #home {
     width: 100%;
@@ -85,12 +85,10 @@ body {
 
     display: grid;
 
-    grid-template-columns: 320px minmax(0, 650px);
-
-    grid-template-rows: auto auto auto;
+    grid-template-columns: minmax(250px, 320px) minmax(0, 650px);
 
     column-gap: 70px;
-    row-gap: 15px;
+    row-gap: 20px;
 
     justify-content: center;
     align-content: center;
@@ -101,18 +99,14 @@ body {
 
 /* HOME IMAGE */
 
-.c2 {
+#home .c2 {
     grid-column: 1;
     grid-row: 1 / 4;
-
-    position: relative;
 
     width: 280px;
     height: 280px;
 
-    margin: 0 auto;
-
-    padding: 0;
+    margin: auto;
 
     background-image: url("me2.jpg");
     background-size: cover;
@@ -121,17 +115,16 @@ body {
 
     border-radius: 25px;
 
-    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
 }
 
 
 /* HOME TEXT */
 
-.c3 {
+#home .c3 {
     grid-column: 2;
     grid-row: 1;
-
-    position: relative;
 
     width: 100%;
     max-width: 650px;
@@ -145,11 +138,9 @@ body {
 
     font-size: 20px;
     line-height: 1.5;
-
-    font-family: "Times New Roman", Times, serif;
 }
 
-.c3 h2 {
+#home .c3 h2 {
     margin: 0 0 20px;
 
     font-size: 38px;
@@ -157,7 +148,7 @@ body {
     color: #fbbf24;
 }
 
-.c3 p {
+#home .c3 p {
     margin: 0 0 18px;
 
     color: #e2e4e9;
@@ -170,21 +161,20 @@ body {
 
 /* HOME BUTTON */
 
-.c4 {
+#home .c4 {
     grid-column: 2;
     grid-row: 2;
 
     width: 100%;
 
     margin: 0;
-    padding: 0;
 }
 
-.c4 button {
-    margin: 0;
-
-    height: 38px;
+#home .c4 button {
     width: 180px;
+    height: 38px;
+
+    margin: 0;
 
     background-color: #e6424d;
 
@@ -199,41 +189,47 @@ body {
 
 /* SOCIAL ICONS */
 
-.c5 {
+#home .c5 {
     grid-column: 2;
     grid-row: 3;
 
     width: 100%;
 
     margin: 0;
-    padding: 0;
 
     font-size: 22px;
 }
 
-.c5 a {
+#home .c5 a {
     text-decoration: none;
 }
 
 
-/* =========================
+/* =====================================================
    ABOUT
-   ========================= */
+   ===================================================== */
+
+/*
+   IMPORTANT:
+   Do NOT use display:contents here.
+   #about itself has class c6.
+*/
 
 #about {
     width: 100%;
-
     min-height: 100vh;
 
     padding: 100px 8% 80px;
 
     display: grid;
 
-    grid-template-columns: 300px minmax(0, 800px);
-
-    grid-template-rows: auto 1fr;
+    grid-template-columns:
+        minmax(260px, 320px)
+        minmax(0, 800px);
 
     column-gap: 70px;
+
+    row-gap: 40px;
 
     justify-content: center;
     align-items: start;
@@ -241,15 +237,14 @@ body {
     margin: 0;
 }
 
-.c6 {
-    display: contents;
-}
 
-.c6 h2 {
-    grid-column: 1 / 3;
+/* ABOUT TITLE */
+
+#about > h2 {
+    grid-column: 1 / -1;
     grid-row: 1;
 
-    margin: 0 0 45px;
+    margin: 0 0 10px;
 
     text-align: center;
 
@@ -265,9 +260,9 @@ body {
 }
 
 
-/* ABOUT IMAGE */
+/* ABOUT IMAGE CONTAINER */
 
-.img {
+#about > .img {
     grid-column: 1;
     grid-row: 2;
 
@@ -277,31 +272,42 @@ body {
 
     justify-content: center;
     align-items: flex-start;
+
+    position: relative;
+    z-index: 5;
 }
 
-.img img {
-    position: relative;
+
+/* ABOUT IMAGE */
+
+#about > .img img {
+    display: block !important;
+
+    visibility: visible !important;
+    opacity: 1 !important;
 
     width: 280px;
     height: 280px;
 
-    margin: 0;
-
-    padding: 0;
+    max-width: 100%;
 
     object-fit: cover;
 
     border-radius: 50%;
+
+    position: relative;
+    z-index: 10;
 }
 
 
 /* ABOUT TEXT */
 
-.c7 {
+#about > .c7 {
     grid-column: 2;
     grid-row: 2;
 
     width: 100%;
+    max-width: 800px;
 
     margin: 0;
 
@@ -318,24 +324,28 @@ body {
     line-height: 1.7;
 
     box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+
+    position: relative;
+    z-index: 3;
 }
 
-.c7 p {
+#about > .c7 p {
     margin-top: 0;
 
     font-size: 17px;
 
     color: black;
+
+    line-height: 1.7;
 }
 
 
-/* =========================
+/* =====================================================
    SKILLS
-   ========================= */
+   ===================================================== */
 
-.c8 {
+#skills {
     width: 100%;
-
     min-height: 100vh;
 
     padding: 100px 8% 80px;
@@ -343,10 +353,8 @@ body {
     margin: 0;
 }
 
-.c8 h2 {
+#skills > h2 {
     margin: 0 0 60px;
-
-    padding: 0;
 
     text-align: center;
 
@@ -355,8 +363,6 @@ body {
     color: #fbbf24;
 
     text-decoration: underline;
-
-    font-family: "Times New Roman", Times, serif;
 }
 
 .skill {
@@ -380,8 +386,6 @@ body {
     border-radius: 12px;
 
     text-align: left;
-
-    transition: 0.3s;
 }
 
 .d:hover {
@@ -390,7 +394,6 @@ body {
 
 .d p {
     font-size: 18px;
-
     color: white;
 }
 
@@ -416,6 +419,9 @@ body {
 
     font-size: 25px;
 }
+
+
+/* SKILL BARS */
 
 .d2,
 .d3,
@@ -482,13 +488,12 @@ body {
 }
 
 
-/* =========================
+/* =====================================================
    EDUCATION
-   ========================= */
+   ===================================================== */
 
-.c9 {
+#education {
     width: 100%;
-
     min-height: 100vh;
 
     padding: 100px 8% 80px;
@@ -496,7 +501,7 @@ body {
     margin: 0;
 }
 
-.c9 h2 {
+#education > h2 {
     margin: 0 0 45px;
 
     text-align: center;
@@ -506,14 +511,12 @@ body {
     color: #fbbf24;
 
     text-decoration: underline;
-
-    font-family: "Times New Roman", Times, serif;
 }
 
 
-/* EDUCATION BOX */
+/* EDUCATION CONTAINER */
 
-.e {
+#education .e {
     width: 100%;
     max-width: 1000px;
 
@@ -524,7 +527,6 @@ body {
     display: flex;
 
     align-items: stretch;
-
     justify-content: center;
 
     gap: 20px;
@@ -537,20 +539,19 @@ body {
 }
 
 
-/* EDUCATION YEAR */
+/* H3 YEARS */
 
-.e > h3 {
+#education .e > h3 {
     display: none;
 }
 
 
 /* EDUCATION CARDS */
 
-.c10,
-.c11,
-.c12 {
+#education .c10,
+#education .c11,
+#education .c12 {
     width: 100%;
-
     min-height: 180px;
 
     padding: 25px 15px;
@@ -568,9 +569,11 @@ body {
     flex-direction: column;
 
     justify-content: center;
-
     align-items: center;
 }
+
+
+/* YEARS */
 
 .c10::before {
     content: "2023 - 2027";
@@ -609,15 +612,33 @@ body {
 }
 
 
-/* =========================
+/* =====================================================
    WORK
-   ========================= */
+   ===================================================== */
 
 #work {
-    min-height: auto;
+    width: 100%;
+    min-height: 100vh;
+
+    padding: 100px 8% 80px;
 }
 
-.e1 {
+#work > h2 {
+    margin: 0 0 45px;
+
+    text-align: center;
+
+    font-size: 38px;
+
+    color: #fbbf24;
+
+    text-decoration: underline;
+}
+
+
+/* WORK CONTAINER */
+
+#work .e1 {
     width: 100%;
     max-width: 1100px;
 
@@ -627,7 +648,8 @@ body {
 
     display: grid;
 
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
 
     gap: 25px;
 
@@ -638,11 +660,13 @@ body {
     border-radius: 15px;
 }
 
-.c13,
-.c14,
-.c15 {
-    width: 100%;
 
+/* WORK CARDS */
+
+#work .c13,
+#work .c14,
+#work .c15 {
+    width: 100%;
     min-height: 260px;
 
     padding: 25px;
@@ -654,23 +678,11 @@ body {
     text-align: center;
 
     box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-
-    transition: 0.3s;
 }
 
-.c13:hover,
-.c14:hover,
-.c15:hover {
-    transform: translateY(-5px);
-
-    background-color: #fbbf24;
-
-    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-}
-
-.c13 h3,
-.c14 h3,
-.c15 h3 {
+#work .c13 h3,
+#work .c14 h3,
+#work .c15 h3 {
     font-size: 20px;
 
     margin-top: 0;
@@ -678,9 +690,9 @@ body {
     color: black;
 }
 
-.c13 p,
-.c14 p,
-.c15 p {
+#work .c13 p,
+#work .c14 p,
+#work .c15 p {
     color: black;
 
     font-size: 16px;
@@ -689,13 +701,12 @@ body {
 }
 
 
-/* =========================
+/* =====================================================
    CONTACT
-   ========================= */
+   ===================================================== */
 
-.f {
+#contact {
     width: 100%;
-
     min-height: 100vh;
 
     padding: 100px 8% 80px;
@@ -703,7 +714,7 @@ body {
     color: black;
 }
 
-.f h2 {
+#contact > h2 {
     margin: 0 0 50px;
 
     text-align: center;
@@ -713,27 +724,30 @@ body {
     color: #fbbf24;
 
     text-decoration: underline;
-
-    font-family: "Times New Roman", Times, serif;
 }
 
-.c16 {
+
+/* CONTACT CONTAINER */
+
+#contact .c16 {
     width: 100%;
     max-width: 1000px;
 
     margin: auto;
 
-    padding: 0;
-
     display: grid;
 
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
 
     gap: 30px;
 }
 
-.c17,
-.c18 {
+
+/* CONTACT BOXES */
+
+#contact .c17,
+#contact .c18 {
     width: 100%;
 
     padding: 30px;
@@ -745,16 +759,15 @@ body {
     box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
-.c17 p {
+#contact .c17 p {
     color: black;
 
     line-height: 1.6;
 }
 
-.c18 input,
-.c18 textarea {
+#contact .c18 input,
+#contact .c18 textarea {
     width: 100%;
-
     max-width: 100%;
 
     padding: 10px;
@@ -762,11 +775,11 @@ body {
     box-sizing: border-box;
 }
 
-.c18 textarea {
+#contact .c18 textarea {
     resize: vertical;
 }
 
-.c18 button {
+#contact .c18 button {
     background-color: #e6424d;
 
     color: white;
@@ -783,9 +796,9 @@ body {
 }
 
 
-/* ==================================================
-   MOBILE RESPONSIVE
-   ================================================== */
+/* =====================================================
+   MOBILE
+   ===================================================== */
 
 @media screen and (max-width: 768px) {
 
@@ -797,17 +810,16 @@ body {
     }
 
 
-    /* NAVIGATION */
+    /* ---------------- NAVIGATION ---------------- */
 
     .c {
-        position: fixed;
-
         width: 100%;
-        height: auto;
 
-        min-height: 55px;
+        min-height: 50px;
 
         padding: 10px 5px;
+
+        justify-content: center;
     }
 
     .c1 {
@@ -816,30 +828,25 @@ body {
         display: flex;
 
         justify-content: center;
-
         align-items: center;
 
         flex-wrap: wrap;
 
-        gap: 8px 14px;
-
-        padding: 0;
+        gap: 7px 12px;
     }
 
     .c1 a {
         font-size: 13px;
 
         margin: 0;
-
         padding: 0;
     }
 
 
-    /* ================= HOME ================= */
+    /* ---------------- HOME ---------------- */
 
     #home {
         width: 100%;
-
         min-height: 100vh;
 
         padding: 100px 20px 60px;
@@ -849,15 +856,13 @@ body {
         flex-direction: column;
 
         align-items: center;
-
         justify-content: flex-start;
 
         gap: 25px;
-
-        margin: 0;
     }
 
-    .c2 {
+
+    #home .c2 {
         width: 210px;
         height: 210px;
 
@@ -872,26 +877,25 @@ body {
         border-radius: 25px;
     }
 
-    .c3 {
+
+    #home .c3 {
         width: 100%;
-        max-width: 550px;
+        max-width: 600px;
 
         margin: 0;
-
-        padding: 0;
 
         text-align: center;
 
         font-size: 17px;
     }
 
-    .c3 h2 {
+    #home .c3 h2 {
         margin: 0 0 15px;
 
         font-size: 30px;
     }
 
-    .c3 p {
+    #home .c3 p {
         margin: 0 0 15px;
 
         font-size: 17px !important;
@@ -899,30 +903,25 @@ body {
         line-height: 1.6;
 
         overflow-wrap: normal;
-
         word-break: normal;
     }
 
-    .c4 {
+
+    #home .c4 {
         width: 100%;
 
         display: flex;
 
         justify-content: center;
-
-        margin: 0;
     }
 
-    .c4 button {
+    #home .c4 button {
         width: 180px;
-
-        margin: 0;
     }
 
-    .c5 {
-        width: 100%;
 
-        margin: 0;
+    #home .c5 {
+        width: 100%;
 
         text-align: center;
 
@@ -930,7 +929,12 @@ body {
     }
 
 
-    /* ================= ABOUT ================= */
+    /* ---------------- ABOUT ---------------- */
+
+    /*
+       VERY IMPORTANT:
+       Force About into ONE COLUMN.
+    */
 
     #about {
         width: 100%;
@@ -939,97 +943,113 @@ body {
 
         padding: 80px 20px 60px;
 
-        display: flex;
+        display: flex !important;
 
-        flex-direction: column;
+        flex-direction: column !important;
 
-        align-items: center;
+        align-items: center !important;
+
+        justify-content: flex-start;
 
         gap: 25px;
 
         margin: 0;
     }
 
-    .c6 {
+
+    #about > h2 {
         width: 100%;
 
-        display: flex;
-
-        flex-direction: column;
-
-        align-items: center;
-    }
-
-    .c6 h2 {
-        width: 100%;
-
-        margin: 0 0 25px;
+        margin: 0 0 10px;
 
         text-align: center;
 
         font-size: 30px;
     }
 
-    .img {
-        width: 100%;
 
-        margin: 0;
+    /* IMAGE FIRST */
 
-        display: flex;
+    #about > .img {
+        width: 100% !important;
 
-        justify-content: center;
-    }
+        display: flex !important;
 
-    .img img {
+        justify-content: center !important;
+
+        align-items: center !important;
+
+        margin: 0 !important;
+
         position: relative;
 
-        width: 200px;
-        height: 200px;
-
-        margin: 0;
-
-        padding: 0;
-
-        object-fit: cover;
+        z-index: 5;
     }
 
-    .c7 {
-        width: 100%;
 
-        max-width: 600px;
+    #about > .img img {
+        display: block !important;
 
-        margin: 0;
+        visibility: visible !important;
+        opacity: 1 !important;
 
-        padding: 25px;
+        width: 200px !important;
+        height: 200px !important;
+
+        max-width: 200px !important;
+
+        object-fit: cover;
+
+        border-radius: 50%;
+
+        margin: 0 auto !important;
+    }
+
+
+    /* TEXT BELOW IMAGE */
+
+    #about > .c7 {
+        width: 100% !important;
+
+        max-width: 650px !important;
+
+        margin: 0 !important;
+
+        padding: 25px !important;
 
         border-radius: 25px;
 
         text-align: left;
+
+        position: relative;
+
+        z-index: 2;
     }
 
-    .c7 p {
+
+    #about > .c7 p {
         font-size: 15px !important;
 
         line-height: 1.7;
+
+        word-break: normal;
+
+        overflow-wrap: break-word;
     }
 
 
-    /* ================= SKILLS ================= */
+    /* ---------------- SKILLS ---------------- */
 
-    .c8 {
+    #skills {
         width: 100%;
 
         min-height: auto;
 
         padding: 80px 20px 60px;
-
-        margin: 0;
     }
 
-    .c8 h2 {
+    #skills > h2 {
         margin: 0 0 40px;
-
-        padding: 0;
 
         font-size: 30px;
     }
@@ -1059,19 +1079,17 @@ body {
     }
 
 
-    /* ================= EDUCATION ================= */
+    /* ---------------- EDUCATION ---------------- */
 
-    .c9 {
+    #education {
         width: 100%;
 
         min-height: auto;
 
         padding: 80px 20px 60px;
-
-        margin: 0;
     }
 
-    .c9 h2 {
+    #education > h2 {
         margin: 0 0 35px;
 
         font-size: 30px;
@@ -1079,28 +1097,32 @@ body {
         text-align: center;
     }
 
-    .e {
-        width: 100%;
 
-        max-width: 600px;
+    #education .e {
+        width: 100% !important;
+
+        max-width: 500px !important;
 
         margin: 0 auto;
 
         padding: 15px;
 
-        display: flex;
+        display: flex !important;
 
-        flex-direction: column;
+        flex-direction: column !important;
+
+        align-items: stretch !important;
 
         gap: 15px;
 
         border-width: 4px;
     }
 
-    .e > h3 {
-        display: block;
 
-        margin: 5px 0 -5px;
+    #education .e > h3 {
+        display: block !important;
+
+        margin: 5px 0 0;
 
         color: #e6424d;
 
@@ -1109,103 +1131,55 @@ body {
         text-align: center;
     }
 
-    .c10,
-    .c11,
-    .c12 {
-        width: 100%;
 
-        min-height: auto;
+    #education .c10,
+    #education .c11,
+    #education .c12 {
+        width: 100% !important;
 
-        padding: 20px;
+        min-height: auto !important;
 
-        margin: 0;
+        padding: 20px !important;
 
-        display: block;
+        margin: 0 !important;
+
+        display: block !important;
 
         border-radius: 15px;
-    }
-
-    .c10::before,
-    .c11::before,
-    .c12::before {
-        display: none;
-    }
-
-    .c10 p,
-    .c11 p,
-    .c12 p {
-        font-size: 15px;
-
-        line-height: 1.5;
-    }
-
-
-    /* ================= WORK ================= */
-
-    .e1 {
-        width: 100%;
-
-        max-width: 600px;
-
-        margin: 0 auto;
-
-        padding: 15px;
-
-        display: flex;
-
-        flex-direction: column;
-
-        gap: 20px;
-
-        height: auto;
-    }
-
-    .c13,
-    .c14,
-    .c15 {
-        width: 100%;
-
-        min-height: auto;
-
-        padding: 25px 20px;
-
-        margin: 0;
-
-        flex: none;
 
         text-align: center;
     }
 
-    .c13 h3,
-    .c14 h3,
-    .c15 h3 {
-        font-size: 20px;
 
-        line-height: 1.3;
+    #education .c10::before,
+    #education .c11::before,
+    #education .c12::before {
+        display: none !important;
     }
 
-    .c13 p,
-    .c14 p,
-    .c15 p {
+
+    #education .c10 p,
+    #education .c11 p,
+    #education .c12 p {
         font-size: 15px;
 
-        line-height: 1.6;
+        line-height: 1.5;
+
+        margin: 0;
     }
 
 
-    /* ================= CONTACT ================= */
+    /* ---------------- WORK ---------------- */
 
-    .f {
+    #work {
         width: 100%;
 
         min-height: auto;
 
         padding: 80px 20px 60px;
-
-        margin: 0;
     }
 
-    .f h2 {
+    #work > h2 {
         margin: 0 0 35px;
 
         font-size: 30px;
@@ -1213,25 +1187,97 @@ body {
         text-align: center;
     }
 
-    .c16 {
-        width: 100%;
 
-        max-width: 600px;
+    #work .e1 {
+        width: 100% !important;
+
+        max-width: 500px !important;
 
         margin: 0 auto;
 
-        padding: 0;
+        padding: 15px;
 
-        display: flex;
+        display: flex !important;
 
-        flex-direction: column;
+        flex-direction: column !important;
+
+        gap: 20px;
+
+        height: auto;
+    }
+
+
+    #work .c13,
+    #work .c14,
+    #work .c15 {
+        width: 100% !important;
+
+        min-height: auto !important;
+
+        padding: 25px 20px;
+
+        margin: 0;
+
+        text-align: center;
+    }
+
+
+    #work .c13 h3,
+    #work .c14 h3,
+    #work .c15 h3 {
+        font-size: 20px;
+
+        line-height: 1.3;
+    }
+
+
+    #work .c13 p,
+    #work .c14 p,
+    #work .c15 p {
+        font-size: 15px;
+
+        line-height: 1.6;
+    }
+
+
+    /* ---------------- CONTACT ---------------- */
+
+    #contact {
+        width: 100%;
+
+        min-height: auto;
+
+        padding: 80px 20px 60px;
+    }
+
+
+    #contact > h2 {
+        margin: 0 0 35px;
+
+        font-size: 30px;
+
+        text-align: center;
+    }
+
+
+    #contact .c16 {
+        width: 100% !important;
+
+        max-width: 500px !important;
+
+        margin: 0 auto;
+
+        display: flex !important;
+
+        flex-direction: column !important;
 
         gap: 20px;
     }
 
-    .c17,
-    .c18 {
-        width: 100%;
+
+    #contact .c17,
+    #contact .c18 {
+        width: 100% !important;
 
         padding: 25px 20px;
 
@@ -1240,7 +1286,8 @@ body {
         border-radius: 20px;
     }
 
-    .c17 p {
+
+    #contact .c17 p {
         font-size: 15px;
 
         line-height: 1.6;
@@ -1248,68 +1295,92 @@ body {
         overflow-wrap: break-word;
     }
 
-    .c18 input,
-    .c18 textarea {
-        width: 100%;
 
-        max-width: 100%;
+    #contact .c18 input,
+    #contact .c18 textarea {
+        width: 100% !important;
+
+        max-width: 100% !important;
     }
 
-    .c18 button {
+
+    #contact .c18 button {
         width: 100%;
     }
 }
 
 
-/* ==================================================
-   VERY SMALL PHONES
-   ================================================== */
+/* =====================================================
+   VERY SMALL MOBILE
+   ===================================================== */
 
 @media screen and (max-width: 400px) {
 
     .c1 {
-        gap: 6px 10px;
+        gap: 6px 9px;
     }
 
     .c1 a {
         font-size: 11px;
     }
 
+
     #home {
         padding: 95px 15px 50px;
     }
 
-    .c2 {
+
+    #home .c2 {
         width: 180px;
         height: 180px;
 
         min-width: 180px;
     }
 
-    .c3 h2 {
+
+    #home .c3 h2 {
         font-size: 27px;
     }
 
-    .c3 p {
+
+    #home .c3 p {
         font-size: 15px !important;
 
         line-height: 1.5;
     }
 
-    .c7 {
-        padding: 18px;
+
+    #about {
+        padding-left: 15px;
+        padding-right: 15px;
     }
 
-    .c13,
-    .c14,
-    .c15 {
+
+    #about > .img img {
+        width: 180px !important;
+        height: 180px !important;
+
+        max-width: 180px !important;
+    }
+
+
+    #about > .c7 {
+        padding: 18px !important;
+    }
+
+
+    #work .c13,
+    #work .c14,
+    #work .c15 {
         padding: 20px 15px;
     }
 
-    .c17,
-    .c18 {
+
+    #contact .c17,
+    #contact .c18 {
         padding: 20px 15px;
     }
+
 }
 
 </style>
